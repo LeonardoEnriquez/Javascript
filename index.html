@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>    
+    <form id="registro">
+        <label>Nombre:</label>
+        <input type="text" id="nombre" ><br><br>
+        <label>correo:</label>
+        <input type="email" id="correo" ><br><br>
+        <label>Telefono:</label>
+        <input type="text" id="telefono" ><br><br>
+        <label>Cuenta:</label>
+        <input type="number" id="cuenta" ><br><br>
+        <label>tipo:</label>
+        <select name="select" id="tipo">
+            <option value="cliente">Cliente</option> 
+            <option value="inversor" selected>Inversor</option>
+            <option value="empleado">Empleado</option>
+          </select><br><br>
+        <label>Acciones a comprar:</label> 
+        <input type="number" id="acciones" ><br><br>
+        <button type="button" id="btnIngresar">Ingresar compra</button>
+      </form>
+      <div id="clientes"><ul></ul></div>
+      <script src='main.js'></script>
+    </body>
+</html>
