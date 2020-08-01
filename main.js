@@ -47,8 +47,9 @@ var Cliente = function(nombre,correo, telefono, cuenta,tipo,acciones){
     this.acciones = acciones;
 }
 
-Cliente.prototype.precio = function registroToString(){
+Cliente.prototype.precio = function (){
     var tipo=  this.tipo;
+    console.log("tipo cliente: "+tipo);
     var precio=0;
     switch(tipo)
     {
@@ -67,7 +68,7 @@ Cliente.prototype.precio = function registroToString(){
    
 }
 
-Cliente.prototype.descuento = function registroToString(){
+Cliente.prototype.descuento = function (){
    // 3% arriba de 1000 acciones
    // 5% arriba de 2000 acciones
     var acciones=  this.acciones;
@@ -84,7 +85,7 @@ Cliente.prototype.descuento = function registroToString(){
     {
         descuento=0;
     }
-    return precio;
+    return descuento;
    
 }
 
@@ -97,8 +98,12 @@ function registrarCliente()
     var cuenta = document.getElementById("cuenta").value;
     var acciones = document.getElementById("acciones").value;
     var tipo = document.getElementById("tipo").value;
-    var cliente= new Cliente(nombre,correo,telefono,cuenta,acciones,tipo);
-    console.log(cliente.nombre);
+    var cliente= new Cliente(nombre,correo,telefono,cuenta,tipo,acciones);
+    var precio=cliente.precio();
+    console.log(precio);
+    var descuento=cliente.descuento();
+    var total=(acciones*precio) - (acciones*precio*descuento);
+    console.log("cliente:" +cliente.nombre + "total a pagar: "+ total);
     return cliente;
 
 }
@@ -107,11 +112,6 @@ function ingresarCompra()
 {      
     var registro= registrarCliente();
     registros.push(registro);
-    for (var i = 0; i < registros.length; i++){
-       nameList = "<li>" + registros[i].name + "</li>";
-       console.log("registros agregado: "+nameList[0]);
-       document.getElementById("clientes").innerHTML += nameList;
-    }
     e.preventDefault();
     
 
