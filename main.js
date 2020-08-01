@@ -111,7 +111,8 @@ function registrarCliente()
 
 function ingresarCompra()
 {      
-    var registro = new Cliente(registrarCliente());    
+    var registro = new Cliente();
+    registro=registrarCliente();        
     var parrafo = document.createElement("p");
     var nodo = document.createTextNode("Cliente: "+registro.nombre+" Total a pagar: "+totalPagar);
     parrafo.appendChild(nodo);
