@@ -21,7 +21,7 @@ var precioEmpleados =17;
 var descuentoBasico = 0.03; //1000 acciones
 var descuentoPremier = 0.05; //2000 acciones
 var registros = [];
-var nameList;
+var totalPagar=0
 
 var Datos = function(nombre, correo, telefono, cuenta){
     this.id= crearUUID();
@@ -103,15 +103,20 @@ function registrarCliente()
     console.log(precio);
     var descuento=cliente.descuento();
     var total=(acciones*precio) - (acciones*precio*descuento);
+    totalPagar=total;
     console.log("cliente:" +cliente.nombre + "total a pagar: "+ total);
-    return cliente;
+    return (cliente);
 
 }
 
 function ingresarCompra()
 {      
-    var registro= registrarCliente();
-    registros.push(registro);
+    var registro = new Cliente(registrarCliente());    
+    var parrafo = document.createElement("p");
+    var nodo = document.createTextNode("Cliente: "+registro.nombre+" Total a pagar: "+totalPagar);
+    parrafo.appendChild(nodo);
+    var elemento = document.getElementById("clientes");
+    elemento.appendChild(parrafo);
     e.preventDefault();
     
 
@@ -122,5 +127,6 @@ btnIngresar.onclick= function(event){
   event.preventDefault();
   console.log('ingresar compra');    
   ingresarCompra();  
+
 }
 
