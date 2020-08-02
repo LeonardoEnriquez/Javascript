@@ -109,7 +109,7 @@ function registrarCliente()
 
 }
 
-function ingresarCompra()
+function ingresarCompra(event)
 {      
     var registro = new Cliente();
     registro=registrarCliente();        
@@ -118,7 +118,7 @@ function ingresarCompra()
     parrafo.appendChild(nodo);
     var elemento = document.getElementById("clientes");
     elemento.appendChild(parrafo);
-    e.preventDefault();
+    event.preventDefault();
     
 
 }
